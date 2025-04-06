@@ -1,6 +1,6 @@
 🐤 SugarDucky
 
-![SugarDucky Banner]([./sweet_duck.png](https://github.com/adityaparamkusam/SugarDucky/blob/main/Webpage/sweet_duck.png))
+![SugarDucky Banner](./sweet_duck.png)
 A performance evaluation system that assigns **rubber ducky points** based on daily task reviews. Combines natural language processing with a fun, gamified reward system to boost motivation and engagement in the workplace.
 
 ---
