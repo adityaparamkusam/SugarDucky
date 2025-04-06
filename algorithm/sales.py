@@ -46,7 +46,7 @@ def evaluate_sales_for_date(date_to_check):
         conn.commit()
         print(f"✅ Sugar Duckys score for {date_str} is  {points} ")
     else:
-        print(f"⚠️ No sales data found for {date_str}")
+        print(f"⚠️ No sales data found for {date_str} from you man ")
 
     cursor.close()
     insert_cursor.close()
@@ -54,12 +54,12 @@ def evaluate_sales_for_date(date_to_check):
 
 # evaluate_sales_for_date(datetime.strptime("2025-03-03", "%Y-%m-%d"))
 
+# same thing man chosse what you like , both are tested and working fine !!!
 
+# start_date = datetime.strptime("2025-03-01", "%Y-%m-%d")
+# end_date = datetime.strptime("2025-03-10", "%Y-%m-%d")
 
-start_date = datetime.strptime("2025-03-01", "%Y-%m-%d")
-end_date = datetime.strptime("2025-03-10", "%Y-%m-%d")
-
-current_date = start_date
-while current_date <= end_date:
-    evaluate_sales_for_date(current_date)
-    current_date += timedelta(days=1)
+# current_date = start_date
+# while current_date <= end_date:
+#     evaluate_sales_for_date(current_date)
+#     current_date += timedelta(days=1)
