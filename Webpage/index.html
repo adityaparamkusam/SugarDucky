@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SugerDucky Dashboard - Employee Points</title>
+  <!-- Include Chart.js if needed -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Base styles from your original template */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f5a623;
+      display: flex;
+      align-items: center;
+    }
+    .logo-icon {
+      margin-right: 0.5rem;
+      /* Adjust size as needed */
+      height: 40px;
+      width: auto;
+    }
+    .breadcrumb {
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #e9ecef;
+      color: #6c757d;
+    }
+    .info-banner {
+      margin: 1rem 2rem;
+      padding: 1rem;
+      background-color: #fff3cd;
+      border-radius: 4px;
+      color: #856404;
+    }
+    .actions-button {
+      background: #f5a623;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .actions-button:hover {
+      background: #e09612;
+    }
+    .metric-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .metric-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .metric-title {
+      color: #6c757d;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .circle-indicator {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.875rem;
+    }
+    /* Custom container and layout styles for the new template */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+    .filter-section {
+      flex: 1;
+      margin-right: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .filter-section h3 {
+      color: #495057;
+      margin-bottom: 1rem;
+    }
+    .filter-section label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+      color: #495057;
+    }
+    .filter-section input[type="date"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+    }
+    .points-card {
+      flex: 0 0 300px;
+    }
+    .points-card .metric-card {
+      text-align: center;
+    }
+    .points-card .metric-value {
+      font-size: 3rem;
+      justify-content: center;
+    }
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #e9ecef;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #495057;
+    }
+    /* Footer style */
+    footer {
+      background: white;
+      padding: 1rem 2rem;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src="Sugar_ducky_emotional_support.png" alt="SugerDucky Logo" class="logo-icon">
+      SugerDucky
+    </div>
+    <div class="menu-icon">&#9776;</div>
+  </div>
+  <div class="breadcrumb">
+    / Dashboard / Employee Points
+  </div>
+  <div class="info-banner">
+    Welcome to SugerDucky! See your ducky points earned each day.
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Left: Filter Section -->
+    <div class="filter-section">
+      <h3>Select Date Range</h3>
+      <form id="filterForm">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" name="fromDate" required>
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate" name="toDate" required>
+        <button type="submit" class="actions-button">Filter Points</button>
+      </form>
+      <div id="dailyPoints" style="margin-top: 2rem;">
+        <!-- Daily points breakdown will be inserted here as a table -->
+      </div>
+    </div>
+
+    <!-- Right: Total Ducky Points Card -->
+    <div class="points-card">
+      <div class="metric-card">
+        <div class="metric-title">Total Ducky Points</div>
+        <div class="metric-value" id="totalPoints">
+          0
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 SugerDucky. All rights reserved.
+  </footer>
+
+  <!-- JavaScript: Fetching data from the API -->
+  <script>
+    /**
+     * Fetch employee points data from the API.
+     * The API (api_points.php) should return a JSON object with:
+     * { totalPoints: number, daily: [ { date: "YYYY-MM-DD", points: number }, ... ] }
+     */
+    function fetchEmployeePoints(fromDate = '', toDate = '') {
+      // Build the API URL with optional query parameters
+      let url = 'api_points.php';
+      if (fromDate && toDate) {
+        url += '?fromDate=' + encodeURIComponent(fromDate) + '&toDate=' + encodeURIComponent(toDate);
+      }
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            console.error('API error:', data.error);
+            return;
+          }
+          // Update total ducky points
+          document.getElementById('totalPoints').textContent = data.totalPoints;
+
+          // Build the daily points breakdown table
+          let dailyPointsHtml = `
+            <h4>Points Earned Each Day</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>`;
+          data.daily.forEach(record => {
+            dailyPointsHtml += `
+                <tr>
+                  <td>${record.date}</td>
+                  <td>${record.points}</td>
+                </tr>`;
+          });
+          dailyPointsHtml += `
+              </tbody>
+            </table>`;
+          document.getElementById('dailyPoints').innerHTML = dailyPointsHtml;
+        })
+        .catch(error => console.error('Error fetching points:', error));
+    }
+
+    // Fetch initial data without filters
+    fetchEmployeePoints();
+
+    // Handle filter form submission
+    document.getElementById('filterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fromDate = document.getElementById('fromDate').value;
+      const toDate = document.getElementById('toDate').value;
+      fetchEmployeePoints(fromDate, toDate);
+    });
+  </script>
+</body>
+</html>
