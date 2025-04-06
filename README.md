@@ -78,5 +78,5 @@ E001, "Customer was frustrated but appreciated my help", Neutral
 
 ## 🧽 Maintainer
 
-**[Your Name]**  
-[LinkedIn] • [Portfolio] • [Website] *(http://3.108.53.187/)*
+**Team Code Nexus**  
+[Website] *(http://3.108.53.187/)*
