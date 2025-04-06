@@ -21,7 +21,7 @@ def evaluate_call_center_for_date(date_to_check):
     insert_cursor = conn.cursor()
 
     # Fetch data
-    cursor.execute("SELECT * FROM website.call_statistics WHERE call_date = %s", (date_str,))
+    cursor.execute("SELECT * FROM website.call_statistics WHERE call_date = %s", (date_str,)) # Website is the DB name
     row = cursor.fetchone()
 
     if row:
