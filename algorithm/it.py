@@ -48,11 +48,12 @@ def evaluate_it_for_date(date_to_check):
 
 # evaluate_it_for_date(datetime.strptime("2025-03-03", "%Y-%m-%d"))
 
+# depends on the sceneria chosse upper or lower part of the code 
 
-start_date = datetime.strptime("2025-03-01", "%Y-%m-%d")
-end_date = datetime.strptime("2025-03-10", "%Y-%m-%d")
+# start_date = datetime.strptime("2025-03-01", "%Y-%m-%d")
+# end_date = datetime.strptime("2025-03-10", "%Y-%m-%d")
 
-current_date = start_date
-while current_date <= end_date:
-    evaluate_it_for_date(current_date)
-    current_date += timedelta(days=1)
+# current_date = start_date
+# while current_date <= end_date:
+#     evaluate_it_for_date(current_date)
+#     current_date += timedelta(days=1)
