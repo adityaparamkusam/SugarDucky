@@ -227,7 +227,7 @@
      */
     function fetchEmployeePoints(fromDate = '', toDate = '') {
       // Build the API URL with optional query parameters
-      let url = 'api_points.php';
+      let url = 'API/api_points.php';
       if (fromDate && toDate) {
         url += '?fromDate=' + encodeURIComponent(fromDate) + '&toDate=' + encodeURIComponent(toDate);
       }
