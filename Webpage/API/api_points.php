@@ -33,7 +33,7 @@ $table = $tableMap[$type];
 // Database connection details
 $host = "3.108.53.187";
 $user = "aditya";
-$pass = "aditya123";  // Replace with your actual password
+$pass = "";   # I knew you would be looking for this !!!!
 $db   = "hack";
 // $port = 3306
 
