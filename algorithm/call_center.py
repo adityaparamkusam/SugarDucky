@@ -15,7 +15,7 @@ def evaluate_call_center_for_date(date_to_check):
     conn = mysql.connector.connect(
         host="3.108.53.187",
         user="aditya",
-        password="aditya123"
+        password=""  # I knew you would be looking for this !!!!
     )
     cursor = conn.cursor(dictionary=True)
     insert_cursor = conn.cursor()
