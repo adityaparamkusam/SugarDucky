@@ -63,7 +63,7 @@ E001, "Customer was frustrated but appreciated my help", Neutral
 ---
 
 ## 📸 Screenshot / Demo
-> *(Coming soon — or let me generate a visual for you!)*
+![SugarDucky Website](Webpage/Sugar Ducky Website.jpeg)
 
 ---
 
