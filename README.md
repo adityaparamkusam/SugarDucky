@@ -1,4 +1,4 @@
-v# 🐤 SugarDucky
+🐤 SugarDucky
 
 ![SugarDucky Banner]Webpage/Sugar_ducky_emotional_support.png
 
